@@ -92,11 +92,11 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemP
           onChange={(e) => setEditValue(e.target.value)}
           onBlur={commitEdit}
           onKeyDown={handleEditKeyDown}
-          className="flex-1 text-sm border-b border-blue-400 bg-transparent focus:outline-none py-0.5"
+          className="flex-1 min-w-0 text-sm border-b border-blue-400 bg-transparent focus:outline-none py-0.5"
         />
       ) : (
         <span
-          className={`flex-1 text-sm ${
+          className={`flex-1 min-w-0 break-words text-sm ${
             task.completed ? 'line-through text-gray-400' : 'text-gray-800'
           }`}
         >
@@ -106,7 +106,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemP
 
       {/* Action buttons — visible on hover or when editing */}
       {!isEditing && (
-        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex shrink-0 gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={startEdit}
             aria-label="Edit task"
