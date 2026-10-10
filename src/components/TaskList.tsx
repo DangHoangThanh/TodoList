@@ -16,11 +16,18 @@ const EMPTY_MESSAGES: Record<Filter, string> = {
 }
 
 export default function TaskList({ tasks, filter, onToggle, onEdit, onDelete }: TaskListProps) {
-  const filtered = tasks.filter((task) => {
-    if (filter === 'active') return !task.completed
-    if (filter === 'completed') return task.completed
-    return true
-  })
+  const filtered = tasks
+    .filter((task) => {
+      if (filter === 'active') return !task.completed
+      if (filter === 'completed') return task.completed
+      return true
+    })
+    .sort((a, b) => {
+      if (filter === 'all') {
+        return Number(a.completed) - Number(b.completed)
+      }
+      return 0
+    })
 
   if (filtered.length === 0) {
     return (

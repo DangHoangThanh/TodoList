@@ -69,15 +69,15 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemP
   }
 
   return (
-    <li className="flex items-center gap-3 px-4 py-3 bg-white rounded-lg border border-gray-100 shadow-sm group hover:shadow-md transition-shadow">
+    <li className="flex items-start gap-3 px-4 py-3 bg-white rounded-lg border border-gray-100 shadow-sm group hover:shadow-md transition-shadow">
       {/* Completion checkbox */}
       <button
         onClick={() => onToggle(task.id)}
         aria-label={task.completed ? 'Mark as active' : 'Mark as complete'}
-        className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+        className={`cursor-pointer flex-shrink-0 w-5 h-5 mt-0.5 rounded border-2 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
           task.completed
-            ? 'bg-green-500 border-green-500 text-white'
-            : 'border-gray-300 hover:border-green-400'
+            ? 'bg-blue-100 border-blue-400 text-blue-600'
+            : 'border-gray-300 hover:border-blue-400'
         }`}
       >
         {task.completed && <CheckIcon />}
@@ -96,7 +96,7 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemP
         />
       ) : (
         <span
-          className={`flex-1 min-w-0 break-words text-sm ${
+          className={`flex-1 min-w-0 break-words text-sm py-0.5 ${
             task.completed ? 'line-through text-gray-400' : 'text-gray-800'
           }`}
         >
@@ -110,14 +110,14 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemP
           <button
             onClick={startEdit}
             aria-label="Edit task"
-            className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="cursor-pointer p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
             <PencilIcon />
           </button>
           <button
             onClick={() => onDelete(task.id)}
             aria-label="Delete task"
-            className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+            className="cursor-pointer p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
           >
             <TrashIcon />
           </button>
